@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { api } from "../../api/api";
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { api } from '../../api/api'
 import {Link} from 'react-router-dom'
 
 const Section = styled.section`
