@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { api } from "../../api/api";
+import {Link} from 'react-router-dom'
 
 const Section = styled.section`
   max-width: 1200px;
@@ -44,12 +45,14 @@ export default function Card() {
     <Section>
       {characters.map((character) => (
         <CardCharacter>
+          <Link to="/sobre">
           <img
             src={[
               character.thumbnail.path + "." + character.thumbnail.extension,
             ]}
             alt="Personagem"
           />
+          </Link>
           <h2>{[character.name]}</h2>
         </CardCharacter>
       ))}

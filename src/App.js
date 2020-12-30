@@ -1,13 +1,26 @@
 import { GlobalStyle } from "./styles/index";
+import Home from './pages/home/home'
+import AboutCharacters from './pages/about-characters/about-characters'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-import Header from './components/header/header'
-import  Card from './components/card/card'
 function App() {
   return (
     <div>
       <GlobalStyle/>
-        <Header/>
-        <Card/>
+      <Router>
+        <Switch>
+        <Route path="/sobre">
+            <AboutCharacters />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+    </Router> 
     </div>
   );
 }
