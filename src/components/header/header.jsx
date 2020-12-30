@@ -10,6 +10,7 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
   background-color: #000C24;
+  margin-bottom: 30px;
 `
 
 export default function header() {

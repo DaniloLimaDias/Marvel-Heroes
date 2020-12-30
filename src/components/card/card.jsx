@@ -3,19 +3,32 @@ import styled from "styled-components";
 import { api } from "../../api/api";
 
 const Section = styled.section`
-  // max-width: 1200px;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // flex-wrap: wrap;
-  // margin: 0 auto;
-  // img {
-    
-  //   // display:flex;
-  //   width:500px;
-  //   height: 500px;
-  //   flex: 1;
-  }
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+`;
+
+const CardCharacter = styled.div`
+img {
+  width: 350px;
+  height: 250px;
+  margin: 20px 5px;
+  border-radius: 30px;
+  cursor:pointer;
+}
+h2{
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  font-size:21px;
+  color:#fff;
+  background: #000000d1;
+  bottom: 90px;
+  font-family: 'Bangers', cursive;
+}
 `;
 
 export default function Card() {
@@ -30,13 +43,15 @@ export default function Card() {
   return (
     <Section>
       {characters.map((character) => (
-        <div>
+        <CardCharacter>
           <img
-            src={[character.thumbnail.path + "." + character.thumbnail.extension]}
-            alt=""
+            src={[
+              character.thumbnail.path + "." + character.thumbnail.extension,
+            ]}
+            alt="Personagem"
           />
           <h2>{[character.name]}</h2>
-        </div>
+        </CardCharacter>
       ))}
     </Section>
   );
