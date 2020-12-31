@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../api/api";
 import styled from "styled-components";
-import img from "../../assets/img/marvel-logo.svg";
 
 const About = styled.div`
   display: flex;
   color: #fff;
   background: #3e4245;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   img {
     width: 300px;
   }
@@ -16,22 +15,19 @@ const AboutContent = styled.div`
   margin-top: 30px;
   max-width: 800px;
   margin-left: 30px;
-  h2{
+  h2 {
     color: #fff;
     font-size: 24px;
-    margin-bottom:5px;
+    margin-bottom: 5px;
   }
-  p{
+  p {
     font-size: 18px;
-    margin-bottom: 40px;
-    color:#c1bebe;
+    color: #c1bebe;
   }
-
 `;
 
 export default function CardAbout() {
   const [characters, setCharacters] = useState([]);
-  console.log(characters);
 
   useEffect(() => {
     api.get("").then((response) => {
@@ -53,6 +49,7 @@ export default function CardAbout() {
             <div>
               <h2>Descrição</h2>
               <p>{[character.description]}</p>
+              {character.description.length === 0 && <p>Não possui descrição</p>}
             </div>
           </AboutContent>
         </About>
