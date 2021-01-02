@@ -35,19 +35,19 @@ const CardCharacter = styled.div`
 export default function Card() {
   // const {onClick} = props
   const [characters, setCharacters] = useState([]);
-  console.log(characters)
-  
+  console.log(characters);
+
   useEffect(() => {
     api.get("").then((response) => {
       setCharacters(response.data.data.results);
     });
   }, []);
-  
+
   return (
     <Section>
       {characters.map((character) => (
         <CardCharacter>
-          <Link to="/sobre">
+          <Link to={`/sobre/${character.id}`}>
             <img
               src={[
                 character.thumbnail.path + "." + character.thumbnail.extension,

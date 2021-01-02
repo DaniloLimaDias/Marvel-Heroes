@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { api } from "../../api/api";
+import {getCharacters } from "../../api/api";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 
 const About = styled.div`
   display: flex;
@@ -27,33 +28,52 @@ const AboutContent = styled.div`
 `;
 
 export default function CardAbout() {
-  const [characters, setCharacters] = useState([]);
+  const [characterSelect, setCharacter] = useState({
+    data: null,
+    loading: true,
+  });
+  console.log(characterSelect)
+
+  let { id } = useParams();
 
   useEffect(() => {
-    api.get("").then((response) => {
-      setCharacters(response.data.data.results);
-    });
+    (async () => {
+      const result = await getCharacters(id);
+      setCharacter({ data: result.data.data.results[0], loading: false });
+    })();
   }, []);
 
   return (
     <>
-      {characters.map((character) => (
+      {!characterSelect.loading && (
         <About>
           <img
-            src={character.thumbnail.path + "." + character.thumbnail.extension}
-            alt=""
+            src={
+              characterSelect.data.thumbnail.path +
+              "." +
+              characterSelect.data.thumbnail.extension
+            }
+            alt="Personagem"
+          />
+          <img
+            src={
+              characterSelect.data.series.resourceURI
+            }
+            alt="Personagem"
           />
           <AboutContent>
             <h2>Nome</h2>
-            <p>{[character.name]}</p>
+            <p>{[characterSelect.data.name]}</p>
             <div>
               <h2>Descrição</h2>
-              <p>{[character.description]}</p>
-              {character.description.length === 0 && <p>Não possui descrição</p>}
+              <p>{[characterSelect.data.description]}</p>
+              {characterSelect.data.description.length === 0 && (
+                <p>Não possui descrição</p>
+              )}
             </div>
           </AboutContent>
         </About>
-      ))}
+      )}
     </>
   );
 }

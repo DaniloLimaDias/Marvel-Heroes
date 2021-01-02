@@ -13,7 +13,7 @@ function App() {
       <GlobalStyle/>
       <Router>
         <Switch>
-        <Route path="/sobre">
+        <Route path="/sobre/:id">
             <AboutCharacters />
           </Route>
           <Route path="/">
