@@ -32,7 +32,7 @@ const CardCharacter = styled.div`
     color: #fff;
     background: #000000d1;
     bottom: 90px;
-    font-family: "Bangers", cursive;
+    // font-family: "Bangers", cursive;
   }
 `;
 
@@ -58,8 +58,8 @@ export default function Card() {
     <>
       <Search onChange={onChange} value={search} />
       <Section>
-        {itemSearch.map((character) => (
-          <CardCharacter>
+        {itemSearch.map((character, index) => (
+          <CardCharacter key={index}>
             <Link to={`/sobre/${character.id}`}>
               <img
                 src={[
