@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { api } from "../../api/api";
 import { Link } from "react-router-dom";
 
+
 const Section = styled.section`
   max-width: 1200px;
   display: flex;
@@ -19,6 +20,10 @@ const CardCharacter = styled.div`
     margin: 20px 5px;
     border-radius: 30px;
     cursor: pointer;
+    @media(max-width: 370px) {
+      width: 300px;
+        
+    }
   }
   h2 {
     text-align: center;

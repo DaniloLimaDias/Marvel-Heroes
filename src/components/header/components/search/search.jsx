@@ -15,6 +15,7 @@ const Search = styled.div`
     width: 25px;
   }
   input{
+    width:140px;
     height:35px;
     border-radius:10px;
     border:none;
@@ -28,11 +29,14 @@ const Search = styled.div`
   }
 `
 
-export default function search() {
+export default function search(props) {
+
+  const {onChange, value} = props;
+
   return (
     <Search>
       <img src={imgSearch} alt="Lupa" />
-      <input type="text" placeholder="O que você procura?" />
+      <input type="text" placeholder="O que você procura?" onChange={onChange} value={value}/>
     </Search>
   );
 }

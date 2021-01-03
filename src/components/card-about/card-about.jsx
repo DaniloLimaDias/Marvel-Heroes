@@ -1,30 +1,55 @@
 import React, { useEffect, useState } from "react";
-import {getCharacters } from "../../api/api";
+import { getCharacters } from "../../api/api";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
 const About = styled.div`
   display: flex;
   color: #fff;
-  background: #3e4245;
-  margin-bottom: 10px;
   img {
-    width: 300px;
+    height: 450px;
+    width: 450px;
+    margin:0px 10px;
+    @media(max-width: 768px) {
+      width: 300px;
+      height:300px
+    }
+  }
+  @media(max-width: 701px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    img{
+      margin-bottom:30px;
+    }
   }
 `;
 const AboutContent = styled.div`
-  margin-top: 30px;
-  max-width: 800px;
-  margin-left: 30px;
+  max-width: 760px;
+  margin: 50px 20px;
   h2 {
     color: #fff;
     font-size: 24px;
-    margin-bottom: 5px;
+    margin-bottom:10px;
+    text-transform: uppercase;
   }
   p {
-    font-size: 18px;
+    font-size: 20px;
     color: #c1bebe;
   }
+  @media(max-width: 768px) {
+    margin: 0px 20px;
+    p{
+      margin-bottom:20px;
+    }
+  }
+`;
+const Nome = styled.div`
+margin-bottom:50px;
+@media(max-width: 701px) {
+  margin-bottom:18px;
+
+}
 `;
 
 export default function CardAbout() {
@@ -32,7 +57,7 @@ export default function CardAbout() {
     data: null,
     loading: true,
   });
-  console.log(characterSelect)
+  console.log(characterSelect);
 
   let { id } = useParams();
 
@@ -55,15 +80,11 @@ export default function CardAbout() {
             }
             alt="Personagem"
           />
-          <img
-            src={
-              characterSelect.data.series.resourceURI
-            }
-            alt="Personagem"
-          />
           <AboutContent>
-            <h2>Nome</h2>
-            <p>{[characterSelect.data.name]}</p>
+            <Nome>
+              <h2>Nome</h2>
+              <p>{[characterSelect.data.name]}</p>
+            </Nome>
             <div>
               <h2>Descrição</h2>
               <p>{[characterSelect.data.description]}</p>

@@ -7,6 +7,10 @@ import imgLogo from "../../../../assets/img/marvel-logo.svg";
 const Logo = styled.img`
   width: 130px;
   padding: 5px 0;
+  @media(max-width: 768px) {
+    width: 100px;
+    margin-left:20px;    
+  }
 `
 
 export default function logo() {
