@@ -7,7 +7,6 @@ export const api = axios.create({
  }
 });
 
- 
 export const getCharacters = (id) => {
   return axios
     .get(

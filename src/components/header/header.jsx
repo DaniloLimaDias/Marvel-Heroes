@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
-import Search from "./components/search/search"
 import Logo from "./components/logo/logo"
 
 
@@ -11,16 +9,12 @@ const Header = styled.header`
   justify-content: center;
   background-color: #000C24;
   margin-bottom: 30px;
-  @media(max-width: 768px) {
-    justify-content: flex-start;
-  }
 `
 
-export default function header() {
+export default function header(props) {
   return (
     <Header>
         <Logo/>
-        <Search/>
     </Header>
   );
 }

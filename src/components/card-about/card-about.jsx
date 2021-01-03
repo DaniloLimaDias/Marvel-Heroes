@@ -44,7 +44,7 @@ const AboutContent = styled.div`
     }
   }
 `;
-const Nome = styled.div`
+const Name = styled.div`
 margin-bottom:50px;
 @media(max-width: 701px) {
   margin-bottom:18px;
@@ -57,7 +57,6 @@ export default function CardAbout() {
     data: null,
     loading: true,
   });
-  console.log(characterSelect);
 
   let { id } = useParams();
 
@@ -66,7 +65,7 @@ export default function CardAbout() {
       const result = await getCharacters(id);
       setCharacter({ data: result.data.data.results[0], loading: false });
     })();
-  }, []);
+  }, [id]);
 
   return (
     <>
@@ -81,10 +80,10 @@ export default function CardAbout() {
             alt="Personagem"
           />
           <AboutContent>
-            <Nome>
+            <Name>
               <h2>Nome</h2>
               <p>{[characterSelect.data.name]}</p>
-            </Nome>
+            </Name>
             <div>
               <h2>Descrição</h2>
               <p>{[characterSelect.data.description]}</p>
